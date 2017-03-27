@@ -1,8 +1,8 @@
 <?php
 
 return [
-    '<% model.instances.single %>'=>[
-        'name'=>'<% model.instances.single %>|<% model.instances.plural %>',
+    '<% model.instance.single %>'=>[
+        'name'=>'<% model.instance.single %>|<% model.instance.plural %>',
         'properties'=>[
             'name'=>'Name',
             'description'=>'Description',

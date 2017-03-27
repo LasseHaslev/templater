@@ -13,7 +13,7 @@ class Create<% model.plural %>Table extends Migration {
 	public function up()
 	{
       // Create photo table
-      Schema::create('<% model.instances.plural %>', function($table) {
+      Schema::create('<% model.instance.plural %>', function($table) {
         $table->increments('id');
 
         $table->timestamps();
@@ -28,7 +28,7 @@ class Create<% model.plural %>Table extends Migration {
 	 */
 	public function down()
 	{
-      Schema::drop('<% model.instances.plural %>');
+      Schema::drop('<% model.instance.plural %>');
 	}
 
 }

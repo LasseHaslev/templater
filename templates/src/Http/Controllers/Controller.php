@@ -23,9 +23,9 @@ class <% model.plural %>Controller extends BaseController
      */
     public function index()
     {
-        $<% model.instances.plural %> = <% model.single %>::all();
+        $<% model.instance.plural %> = <% model.single %>::all();
         return view( '<% package.name %>::index' )
-            ->with( compact( '<% model.instances.plural %>' ) );
+            ->with( compact( '<% model.instance.plural %>' ) );
     }
 
     /**
@@ -46,9 +46,9 @@ class <% model.plural %>Controller extends BaseController
      */
     public function store(Request $request)
     {
-        $<% model.instances.single %> = <% model.single %>::create( $request->all() );
-        flash( trans( 'crudlang::messages.stored.success', [ 'model'=>$<% model.instances.single %>->name ] ), 'success' );
-        return redirect()->route( '<% package.name %>.<% model.instances.plural %>.index' );
+        $<% model.instance.single %> = <% model.single %>::create( $request->all() );
+        flash( trans( 'crudlang::messages.stored.success', [ 'model'=>$<% model.instance.single %>->name ] ), 'success' );
+        return redirect()->route( '<% package.name %>.<% model.instance.plural %>.index' );
     }
 
     /**
@@ -57,10 +57,10 @@ class <% model.plural %>Controller extends BaseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show( <% model.single %> $<% model.instances.single %> )
+    public function show( <% model.single %> $<% model.instance.single %> )
     {
         return view( '<% package.name %>::show' )
-            ->with( compact( '<% model.instances.single %>' ) );
+            ->with( compact( '<% model.instance.single %>' ) );
     }
 
     /**
@@ -69,10 +69,10 @@ class <% model.plural %>Controller extends BaseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit( <% model.single %> $<% model.instances.single %> )
+    public function edit( <% model.single %> $<% model.instance.single %> )
     {
         return view( '<% package.name %>::edit' )
-            ->with( compact( '<% model.instances.single %>' ) );
+            ->with( compact( '<% model.instance.single %>' ) );
     }
 
     /**
@@ -82,11 +82,11 @@ class <% model.plural %>Controller extends BaseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, <% model.single %> $<% model.instances.single %>)
+    public function update(Request $request, <% model.single %> $<% model.instance.single %>)
     {
-        $<% model.instances.single %>->update( $request->all() );
+        $<% model.instance.single %>->update( $request->all() );
 
-        flash( trans( 'crudlang::messages.updated.success', [ 'model'=>$<% model.instances.single %>->name ] ), 'success' );
+        flash( trans( 'crudlang::messages.updated.success', [ 'model'=>$<% model.instance.single %>->name ] ), 'success' );
 
         return redirect()->back();
     }
@@ -97,14 +97,14 @@ class <% model.plural %>Controller extends BaseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy( <% model.single %> $<% model.instances.single %> )
+    public function destroy( <% model.single %> $<% model.instance.single %> )
     {
-        if ( $<% model.instances.single %>->delete() ) {
-            flash( trans( 'crudlang::messages.deleted.success', [ 'model'=>$<% model.instances.single %>->name ] ), 'success' );
+        if ( $<% model.instance.single %>->delete() ) {
+            flash( trans( 'crudlang::messages.deleted.success', [ 'model'=>$<% model.instance.single %>->name ] ), 'success' );
         }
         else {
-            flash( trans( 'crudlang::messages.deleted.error', [ 'model'=>$<% model.instances.single %>->name ] ), 'success' );
+            flash( trans( 'crudlang::messages.deleted.error', [ 'model'=>$<% model.instance.single %>->name ] ), 'success' );
         }
-        return redirect()->route( '<% package.name %>.<% model.instances.plural %>.index' );
+        return redirect()->route( '<% package.name %>.<% model.instance.plural %>.index' );
     }
 }

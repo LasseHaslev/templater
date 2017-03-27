@@ -27,7 +27,9 @@
   "dependencies": {
     "colors": "^1.1.2",
     "hogan.js": "^3.0.2",
+    "inquirer": "^3.0.6",
     "ncp": "^2.0.0",
+    "prompt": "^1.0.0",
     "shelljs": "^0.7.7"
   }
 }

@@ -20,20 +20,20 @@ class Router extends PackageRouter
      */
     public function web()
     {
-        Route::get( '<% model.instances.plural %>', '\\' .<% model.plural %>Controller::class . '@index' )
-            ->name( '<% package.name %>.<% model.instances.plural %>.index' );
-        Route::get( '<% model.instances.plural %>/create', '\\' .<% model.plural %>Controller::class . '@create' )
-            ->name( '<% package.name %>.<% model.instances.plural %>.create' );
-        Route::post( '<% model.instances.plural %>/store', '\\' .<% model.plural %>Controller::class . '@store' )
-            ->name( '<% package.name %>.<% model.instances.plural %>.store' );
-        Route::get( '<% model.instances.plural %>/{<% model.instances.single %>}', '\\' .<% model.plural %>Controller::class . '@show' )
-            ->name( '<% package.name %>.<% model.instances.plural %>.show' );
-        Route::get( '<% model.instances.plural %>/{<% model.instances.single %>}/edit', '\\' .<% model.plural %>Controller::class . '@edit' )
-            ->name( '<% package.name %>.<% model.instances.plural %>.edit' );
-        Route::put( '<% model.instances.plural %>/{<% model.instances.single %>}', '\\' .<% model.plural %>Controller::class . '@update' )
-            ->name( '<% package.name %>.<% model.instances.plural %>.update' );
-        Route::delete( '<% model.instances.plural %>/{<% model.instances.single %>}', '\\' .<% model.plural %>Controller::class . '@destroy' )
-            ->name( '<% package.name %>.<% model.instances.plural %>.destroy' );
+        Route::get( '<% model.instance.plural %>', '\\' .<% model.plural %>Controller::class . '@index' )
+            ->name( '<% package.name %>.<% model.instance.plural %>.index' );
+        Route::get( '<% model.instance.plural %>/create', '\\' .<% model.plural %>Controller::class . '@create' )
+            ->name( '<% package.name %>.<% model.instance.plural %>.create' );
+        Route::post( '<% model.instance.plural %>/store', '\\' .<% model.plural %>Controller::class . '@store' )
+            ->name( '<% package.name %>.<% model.instance.plural %>.store' );
+        Route::get( '<% model.instance.plural %>/{<% model.instance.single %>}', '\\' .<% model.plural %>Controller::class . '@show' )
+            ->name( '<% package.name %>.<% model.instance.plural %>.show' );
+        Route::get( '<% model.instance.plural %>/{<% model.instance.single %>}/edit', '\\' .<% model.plural %>Controller::class . '@edit' )
+            ->name( '<% package.name %>.<% model.instance.plural %>.edit' );
+        Route::put( '<% model.instance.plural %>/{<% model.instance.single %>}', '\\' .<% model.plural %>Controller::class . '@update' )
+            ->name( '<% package.name %>.<% model.instance.plural %>.update' );
+        Route::delete( '<% model.instance.plural %>/{<% model.instance.single %>}', '\\' .<% model.plural %>Controller::class . '@destroy' )
+            ->name( '<% package.name %>.<% model.instance.plural %>.destroy' );
     }
 
 }

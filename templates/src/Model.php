@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class <% model.single %> extends Model {
 
-    protected $table = '<% model.instances.plural %>';
+    protected $table = '<% model.instance.plural %>';
 
     protected $fillable = [
         'name',
