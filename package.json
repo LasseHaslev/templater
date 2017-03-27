@@ -1,5 +1,5 @@
 {
-  "name": "@lassehaslev/laravel-package",
+  "name": "@lassehaslev/templater",
   "version": "0.0.1",
   "description": "Create a nice starter template for laravel package",
   "main": "bin/app.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LasseHaslev/laravel-package.git"
+    "url": "git+https://github.com/LasseHaslev/templater.git"
   },
   "keywords": [
     "laravel",
@@ -18,11 +18,11 @@
   "author": "Lasse S. Haslev",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/LasseHaslev/laravel-package/issues"
+    "url": "https://github.com/LasseHaslev/templater/issues"
   },
-  "homepage": "https://github.com/LasseHaslev/laravel-package#readme",
+  "homepage": "https://github.com/LasseHaslev/templater#readme",
   "bin": {
-    "laravel-package": "./bin/app.js"
+    "templater": "./bin/app.js"
   },
   "dependencies": {
     "colors": "^1.1.2",
