@@ -33,3 +33,33 @@ var templater = require( './Templater' )([
     },
 ]);
 ```
+
+#### Templates
+You can add any files in this folder.
+Use ```<% variable.name %>``` syntax to edit your variables
+
+templates/TestFile.php
+```php
+<?php
+
+/**
+ * Class TestFile
+ * @author <% author.name %> <<% author.email %>>
+ */
+class TestFile
+{
+}
+```
+
+*This will render*
+```php
+<?php
+
+/**
+ * Class TestFile
+ * @author My name <your@email.com>
+ */
+class TestFile
+{
+}
+```

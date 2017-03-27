@@ -1,0 +1,6 @@
+bin/
+node_modules/
+templates/
+testing/
+yarn.lock
+README.md
