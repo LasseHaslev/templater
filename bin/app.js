@@ -1,6 +1,6 @@
 #! /usr/bin/env node
 
-var templater = require( './Templater' )([
+var templater = require( '../src/Templater' )([
     {
         type: 'input',
         name: 'author.name',
