@@ -35,10 +35,11 @@ var templater = require( './Templater' )([
 ```
 
 #### Templates
-You can add any files in this folder.
-Use ```<% variable.name %>``` syntax to edit your variables
+You can add any files in this folder. All files and folders/subfolders added in this folder will be copied to destination and rendered with new variables.
 
-templates/TestFile.php
+Use ```<% variable.name %>``` syntax to edit your variables.
+
+###### Example file
 ```php
 <?php
 
