@@ -31,7 +31,9 @@ var templater = require( './Templater' )([
         message: 'Whats your email?',
         default: 'your@email.com',
     },
-]);
+], {
+    templateFolder: __dirname + '/../templates',
+});
 ```
 
 #### Templates
