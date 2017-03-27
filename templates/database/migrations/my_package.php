@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Create%model_plural%Table extends Migration {
+class Create<% model.plural %>Table extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -13,7 +13,7 @@ class Create%model_plural%Table extends Migration {
 	public function up()
 	{
       // Create photo table
-      Schema::create('%instance_plural%', function($table) {
+      Schema::create('<% model.instances.plural %>', function($table) {
         $table->increments('id');
 
         $table->timestamps();
@@ -28,7 +28,7 @@ class Create%model_plural%Table extends Migration {
 	 */
 	public function down()
 	{
-      Schema::drop('%instance_plural%');
+      Schema::drop('<% model.instances.plural %>');
 	}
 
 }

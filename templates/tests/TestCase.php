@@ -2,7 +2,7 @@
 
 /**
  * Class TestCase
- * @author %name%
+ * @author <% author.name %>
  */
 class TestCase extends Orchestra\Testbench\TestCase
 {
@@ -38,7 +38,7 @@ class TestCase extends Orchestra\Testbench\TestCase
 
     protected function getPackageProviders($app)
     {
-        return ['%namespace%\Providers\ServiceProvider'];
+        return ['<% package.namespace %>\Providers\ServiceProvider'];
     }
 
 }

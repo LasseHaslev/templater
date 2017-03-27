@@ -1,11 +1,11 @@
-<?php namespace %namespace%\Providers;
+<?php namespace <% package.namespace %>\Providers;
 
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
-use %namespace%\Http\Router;
+use <% package.namespace %>\Http\Router;
 
 /**
  * Class ServiceProvider
- * @author %name%
+ * @author <% author.name %>
  */
 class ServiceProvider extends BaseServiceProvider
 {
@@ -16,7 +16,7 @@ class ServiceProvider extends BaseServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom( __DIR__.'/../../config/%packagename%.php', '%packagename%');
+        $this->mergeConfigFrom( __DIR__.'/../../config/<% package.name %>.php', '<% package.name %>');
         Router::create();
     }
 
@@ -27,11 +27,11 @@ class ServiceProvider extends BaseServiceProvider
      */
     public function boot()
     {
-        $this->publishes([__DIR__.'/../../config/%packagename%.php'=>config_path('%packagename%.php')], 'config');
+        $this->publishes([__DIR__.'/../../config/<% package.name %>.php'=>config_path('<% package.name %>.php')], 'config');
         $this->loadMigrationsFrom( __DIR__.'/../../database/migrations' );
-        $this->loadViewsFrom( __DIR__.'/../../resources/views', '%packagename%' );
+        $this->loadViewsFrom( __DIR__.'/../../resources/views', '<% package.name %>' );
 
-        $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', '%packagename%');
-        $this->publishes([ __DIR__.'/../../resources/lang', resource_path( 'lang/vendor/%packagename%' ) ], 'lang');
+        $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', '<% package.name %>');
+        $this->publishes([ __DIR__.'/../../resources/lang', resource_path( 'lang/vendor/<% package.name %>' ) ], 'lang');
     }
 }

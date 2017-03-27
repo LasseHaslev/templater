@@ -1,19 +1,19 @@
 <?php
 
-namespace %namespace%\Http\Controllers;
+namespace <% package.namespace %>\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use %namespace%\%model%;
+use <% namespacemodel %>;
 
 /**
- * Class %model_plural%Controller
- * @author %name%
+ * Class <% model.plural %>Controller
+ * @author <% author.name %>
  */
-class %model_plural%Controller extends BaseController
+class <% model.plural %>Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
     /**
@@ -23,9 +23,9 @@ class %model_plural%Controller extends BaseController
      */
     public function index()
     {
-        $%instance_plural% = %model%::all();
-        return view( '%packagename%::index' )
-            ->with( compact( '%instance_plural%' ) );
+        $<% model.instances.plural %> = <% model.single %>::all();
+        return view( '<% package.name %>::index' )
+            ->with( compact( '<% model.instances.plural %>' ) );
     }
 
     /**
@@ -35,7 +35,7 @@ class %model_plural%Controller extends BaseController
      */
     public function create()
     {
-        return view( '%packagename%::create' );
+        return view( '<% package.name %>::create' );
     }
 
     /**
@@ -46,9 +46,9 @@ class %model_plural%Controller extends BaseController
      */
     public function store(Request $request)
     {
-        $%instance% = %model%::create( $request->all() );
-        flash( trans( 'crudlang::messages.stored.success', [ 'model'=>$%instance%->name ] ), 'success' );
-        return redirect()->route( '%packagename%.%instance_plural%.index' );
+        $<% model.instances.single %> = <% model.single %>::create( $request->all() );
+        flash( trans( 'crudlang::messages.stored.success', [ 'model'=>$<% model.instances.single %>->name ] ), 'success' );
+        return redirect()->route( '<% package.name %>.<% model.instances.plural %>.index' );
     }
 
     /**
@@ -57,10 +57,10 @@ class %model_plural%Controller extends BaseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show( %model% $%instance% )
+    public function show( <% model.single %> $<% model.instances.single %> )
     {
-        return view( '%packagename%::show' )
-            ->with( compact( '%instance%' ) );
+        return view( '<% package.name %>::show' )
+            ->with( compact( '<% model.instances.single %>' ) );
     }
 
     /**
@@ -69,10 +69,10 @@ class %model_plural%Controller extends BaseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit( %model% $%instance% )
+    public function edit( <% model.single %> $<% model.instances.single %> )
     {
-        return view( '%packagename%::edit' )
-            ->with( compact( '%instance%' ) );
+        return view( '<% package.name %>::edit' )
+            ->with( compact( '<% model.instances.single %>' ) );
     }
 
     /**
@@ -82,11 +82,11 @@ class %model_plural%Controller extends BaseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, %model% $%instance%)
+    public function update(Request $request, <% model.single %> $<% model.instances.single %>)
     {
-        $%instance%->update( $request->all() );
+        $<% model.instances.single %>->update( $request->all() );
 
-        flash( trans( 'crudlang::messages.updated.success', [ 'model'=>$%instance%->name ] ), 'success' );
+        flash( trans( 'crudlang::messages.updated.success', [ 'model'=>$<% model.instances.single %>->name ] ), 'success' );
 
         return redirect()->back();
     }
@@ -97,14 +97,14 @@ class %model_plural%Controller extends BaseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy( %model% $%instance% )
+    public function destroy( <% model.single %> $<% model.instances.single %> )
     {
-        if ( $%instance%->delete() ) {
-            flash( trans( 'crudlang::messages.deleted.success', [ 'model'=>$%instance%->name ] ), 'success' );
+        if ( $<% model.instances.single %>->delete() ) {
+            flash( trans( 'crudlang::messages.deleted.success', [ 'model'=>$<% model.instances.single %>->name ] ), 'success' );
         }
         else {
-            flash( trans( 'crudlang::messages.deleted.error', [ 'model'=>$%instance%->name ] ), 'success' );
+            flash( trans( 'crudlang::messages.deleted.error', [ 'model'=>$<% model.instances.single %>->name ] ), 'success' );
         }
-        return redirect()->route( '%packagename%.%instance_plural%.index' );
+        return redirect()->route( '<% package.name %>.<% model.instances.plural %>.index' );
     }
 }

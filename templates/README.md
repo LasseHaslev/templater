@@ -65,11 +65,11 @@ class MyTest extends TestCase {
 ```
 
 ## Usage after development
-Run ```composer require %composername%```
+Run ```composer require <% composer.name %>```
 
 Create your package and add the following line to ```providers``` in ```config/app.php``` 
 ```
-%namespace%\Providers\ServiceProvider::class,
+<% package.namespace %>\Providers\ServiceProvider::class,
 ```
 
 

@@ -1,16 +1,16 @@
 <?php
 
-namespace %namespace%;
+namespace <% package.namespace %>;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Image
- * @author %name%
+ * @author <% author.name %>
  */
-class %model% extends Model {
+class <% model.single %> extends Model {
 
-    protected $table = '%instance_plural%';
+    protected $table = '<% model.instances.plural %>';
 
     protected $fillable = [
         'name',

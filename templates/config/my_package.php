@@ -2,7 +2,7 @@
 return [
     'views'=>[
         'backend'=>[
-            'layout'=>'%packagename%::layouts.base',
+            'layout'=>'<% package.name %>::layouts.base',
         ]
     ]
 ];

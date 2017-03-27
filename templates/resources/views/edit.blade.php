@@ -1,24 +1,24 @@
-@extends( config( '%packagename%.views.backend.layout' ) )
+@extends( config( '<% package.name %>.views.backend.layout' ) )
 
 @section( 'content' )
 
 <div class="content">
-    <h1 class="title">{{ trans( 'crudlang::pages.edit.model', [ 'name'=>trans_choice( '%packagename%::models.%instance%.name', true ) ] ) }}</h1>
+    <h1 class="title">{{ trans( 'crudlang::pages.edit.model', [ 'name'=>trans_choice( '<% package.name %>::models.<% model.instances.single %>.name', true ) ] ) }}</h1>
 
-    <form method="POST" action="{{ route( '%packagename%.%instance_plural%.update', $%instance%->id ) }}">
+    <form method="POST" action="{{ route( '<% package.name %>.<% model.instances.plural %>.update', $<% model.instances.single %>->id ) }}">
         <input type="hidden" name="_method" value="PUT">
-@include( '%packagename%::elements.form' )
-        <button type="submit" class="button is-primary">@lang( 'crudlang::buttons.update', [ 'item'=>trans_choice('%packagename%::models.%instance%.name', 1) ] )</button>
+@include( '<% package.name %>::elements.form' )
+        <button type="submit" class="button is-primary">@lang( 'crudlang::buttons.update', [ 'item'=>trans_choice('<% package.name %>::models.<% model.instances.single %>.name', 1) ] )</button>
 
-                    <a class="button is-danger" href="{{ route( '%packagename%.%instance_plural%.destroy', $%instance%->id ) }}"
+                    <a class="button is-danger" href="{{ route( '<% package.name %>.<% model.instances.plural %>.destroy', $<% model.instances.single %>->id ) }}"
                         onclick="event.preventDefault();
-                                    document.getElementById('delete-form-{{ $%instance%->id }}').submit();">
-@lang( 'crudlang::buttons.delete', [ 'item'=>trans_choice('%packagename%::models.%instance%.name', 1) ] )
+                                    document.getElementById('delete-form-{{ $<% model.instances.single %>->id }}').submit();">
+@lang( 'crudlang::buttons.delete', [ 'item'=>trans_choice('<% package.name %>::models.<% model.instances.single %>.name', 1) ] )
                     </a>
 
-        <a href="{{ route( '%packagename%.%instance_plural%.index' ) }}" class="button is-default">@lang( 'crudlang::buttons.cancel' )</a>
+        <a href="{{ route( '<% package.name %>.<% model.instances.plural %>.index' ) }}" class="button is-default">@lang( 'crudlang::buttons.cancel' )</a>
     </form>
-                    <form id="delete-form-{{ $%instance%->id }}" action="{{ route( '%packagename%.%instance_plural%.destroy', $%instance%->id ) }}" method="POST" style="display: none;">
+                    <form id="delete-form-{{ $<% model.instances.single %>->id }}" action="{{ route( '<% package.name %>.<% model.instances.plural %>.destroy', $<% model.instances.single %>->id ) }}" method="POST" style="display: none;">
                         {{ csrf_field() }}
                         <input type="hidden" name="_method" value="DELETE" />
                     </form>

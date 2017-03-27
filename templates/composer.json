@@ -1,10 +1,10 @@
 {
-    "name": "%composername%",
+    "name": "<% composer.name %>",
     "type": "laravel-plugin",
     "authors": [
         {
-            "name": "%name%",
-            "email": "%email%"
+            "name": "<% author.name %>",
+            "email": "<% author.email %>"
         }
     ],
     "require": {
@@ -16,12 +16,12 @@
     },
     "extra": {
         "laravel-modules": {
-            "service-provider": "%namespace%\\Providers\\ServiceProvider"
+            "service-provider": "<% package.namespace %>\\Providers\\ServiceProvider"
         }
     },
     "autoload": {
         "psr-4": {
-            "%namespace%\\": "src/"
+            "<% package.namespace %>\\": "src/"
         }
     },
     "autoload-dev": {
