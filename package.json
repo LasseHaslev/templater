@@ -2,7 +2,7 @@
   "name": "@lassehaslev/templater",
   "version": "0.0.1",
   "description": "Create a nice starter template for laravel package",
-  "main": "bin/app.js",
+  "main": "bin/Templater.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,8 +11,6 @@
     "url": "git+https://github.com/LasseHaslev/templater.git"
   },
   "keywords": [
-    "laravel",
-    "package",
     "template"
   ],
   "author": "Lasse S. Haslev",
