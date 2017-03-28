@@ -17,6 +17,8 @@ var templater = new Templater([
     },
 ]);
 
-templater.start();
+templater.start().then( function() {
+    console.log('All complete!');
+} );
 
 // console.log(templater);

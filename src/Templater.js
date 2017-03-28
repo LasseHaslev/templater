@@ -13,8 +13,12 @@ module.exports = function(data, options) {
 
     this.start = function() {
         var self = this;
-        inquirer.prompt( data ).then( function( newData ) {
-            TemplateReplacer( newData, self.defaults );
+        return new Promise( function( resolve, reject ) {
+            inquirer.prompt( data ).then( function( newData ) {
+                TemplateReplacer( newData, self.defaults ).then( function() {
+                    resolve();
+                } );
+            } );
         } );
     };
 
