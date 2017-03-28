@@ -11,7 +11,7 @@ module.exports = function(data, options) {
     }, options);
 
     // console.log(this.replacer);
-    this.replacer = new TemplateReplacer( data, this.defaults );
+    this.replacer = new TemplateReplacer( this.defaults );
 
     this.start = function() {
         var self = this;

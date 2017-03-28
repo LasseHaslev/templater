@@ -4,7 +4,7 @@ var ncp = require( 'ncp' ).ncp;
 var hogan = require( 'hogan.js' );
 var extend = require( 'extend' );
 
-module.exports = function( data, options ) {
+module.exports = function( options, data ) {
 
     this.allFiles = [];
 
