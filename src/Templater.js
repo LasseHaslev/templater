@@ -6,7 +6,7 @@ var TemplateReplacer = require( './TemplateReplacer' );
 module.exports = function(data, options) {
 
     this.defaults = extend(true, {
-        templateFolder: __dirname + '/../templates',
+        // templateFolder: __dirname + '/../templates',
         folder: process.argv[2] || './',
     }, options);
 
@@ -19,8 +19,8 @@ module.exports = function(data, options) {
             inquirer.prompt( data ).then( function( newData ) {
                 // self.replacer.start( newData );
                 self.replacer.start( newData ).then( function( data ) {
-                    console.log(data);
-                    resolve();
+                    data.data = newData;
+                    resolve( data );
                 } ).catch( function( reason ) {
                     reject(reason)
                 } );
