@@ -18,7 +18,8 @@ Templater takes 2 parameters
 ```js
 #! /usr/bin/env node
 
-var templater = require( './Templater' )([
+var Templater = require( './Templater' );
+var templater = new Templater([
     {
         type: 'input',
         name: 'author.name',
@@ -34,6 +35,8 @@ var templater = require( './Templater' )([
 ], {
     templateFolder: __dirname + '/../templates',
 });
+
+templater.start();
 ```
 
 #### Templates

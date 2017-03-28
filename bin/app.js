@@ -1,6 +1,8 @@
 #! /usr/bin/env node
 
-var templater = require( '../src/Templater' )([
+var Templater = require( '../src/Templater' );
+
+var templater = new Templater([
     {
         type: 'input',
         name: 'author.name',
@@ -14,3 +16,7 @@ var templater = require( '../src/Templater' )([
         default: 'your@email.com',
     },
 ]);
+
+templater.start();
+
+// console.log(templater);
