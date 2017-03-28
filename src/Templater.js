@@ -20,6 +20,7 @@ module.exports = function(data, options) {
                 // self.replacer.start( newData );
                 self.replacer.start( newData ).then( function( data ) {
                     data.data = newData;
+                    data.folder = self.defaults;
                     resolve( data );
                 } ).catch( function( reason ) {
                     reject(reason)

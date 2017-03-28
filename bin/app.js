@@ -18,8 +18,9 @@ var templater = new Templater([
 ]);
 
 templater.start().then( function( response ) {
-    console.log(response);
     console.log('All complete!');
+    console.log('This is what we got in response:');
+    console.log(response);
 } );
 
 // console.log(templater);

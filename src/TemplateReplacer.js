@@ -41,6 +41,8 @@ module.exports = function( options, data ) {
                 return Promise.all( promises ).then( function( test ) {
                     resolve({
                         files: self.allFiles,
+                        folder: self.defaults.folder,
+                        templateFolder: self.defaults.templateFolder,
                     });
                 } ).catch( function( reason ) {
                     reject(reason)
