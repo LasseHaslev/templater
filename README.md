@@ -36,7 +36,9 @@ var templater = new Templater([
     templateFolder: __dirname + '/../templates',
 });
 
-templater.start();
+templater.start().then( function( response ) {
+    console.log( 'All complete'! );
+} );
 ```
 
 #### Templates
