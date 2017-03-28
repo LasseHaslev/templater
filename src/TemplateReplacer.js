@@ -18,44 +18,59 @@ module.exports = function( options, data ) {
     this.start = function( data ) {
 
         this.data = data || this.data;
-
         var self = this;
-        ncp( this.defaults.templateFolder, this.defaults.folder, {
-            transform: function( read, write ) {
-                self.allFiles.push( write.path );
-                read.pipe( write );
-            }
-        }, function( error ) {
-            if (error) {
-                return console.error( error );
-            }
-            self.replaceVariables();
-        } );
+
+        return new Promise( function( resolve, reject ) {
+            var promises = [];
+            ncp( self.defaults.templateFolder, self.defaults.folder, {
+                transform: function( read, write ) {
+                    self.allFiles.push( write.path );
+                    read.pipe( write );
+                }
+            }, function( error ) {
+                if (error) {
+                    reject( error );
+                    return console.error( error );
+                }
+                for (var i = 0, len = self.allFiles.length; i < len; i++) {
+                    var filePath = self.allFiles[i];
+                    var promise = self.replaceVariable( filePath );
+                    promises.push( promise );
+                }
+
+                return Promise.all( promises ).then( function( test ) {
+                    resolve();
+                } ).catch( function( reason ) {
+                    reject(reason)
+                } );
+            } );
+        } )
+
+
     }
 
-
-    this.replaceVariables = function() {
-        for (var i = 0, len = this.allFiles.length; i < len; i++) {
-            var filePath = this.allFiles[i];
-            this.replaceVariable( filePath );
-        }
-    };
     this.replaceVariable = function( filePath ) {
 
         var self = this;
-        fileSystem.readFile( filePath, 'utf8', function( error, fileContent ) {
-            if (error) {
-                console.error( error );
-            }
-            // console.log(self.data);
-            var newContent = hogan.compile( fileContent, { delimiters: '<% %>' } ).render(self.data);
-
-            fileSystem.writeFile( filePath, newContent, 'utf8', function( error ) {
+        return new Promise( function( resolve, reject ) {
+            fileSystem.readFile( filePath, 'utf8', function( error, fileContent ) {
                 if (error) {
                     console.error( error );
+                    reject( error );
                 }
+                // console.log(self.data);
+                var newContent = hogan.compile( fileContent, { delimiters: '<% %>' } ).render(self.data);
+
+                fileSystem.writeFile( filePath, newContent, 'utf8', function( error ) {
+                    if (error) {
+                        reject( error );
+                        console.error( error );
+                    }
+                    resolve();
+                } );
             } );
         } );
+
     };
 
 };

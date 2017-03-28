@@ -17,10 +17,12 @@ module.exports = function(data, options) {
         var self = this;
         return new Promise( function( resolve, reject ) {
             inquirer.prompt( data ).then( function( newData ) {
-                self.replacer.start( newData );
-                // TemplateReplacer( newData, self.defaults ).then( function() {
-                    // resolve();
-                // } );
+                // self.replacer.start( newData );
+                self.replacer.start( newData ).then( function() {
+                    resolve();
+                } ).catch( function( reason ) {
+                    reject(reason)
+                } );
             } );
         } );
     };
