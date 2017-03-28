@@ -18,7 +18,8 @@ module.exports = function(data, options) {
         return new Promise( function( resolve, reject ) {
             inquirer.prompt( data ).then( function( newData ) {
                 // self.replacer.start( newData );
-                self.replacer.start( newData ).then( function() {
+                self.replacer.start( newData ).then( function( data ) {
+                    console.log(data);
                     resolve();
                 } ).catch( function( reason ) {
                     reject(reason)

@@ -39,7 +39,9 @@ module.exports = function( options, data ) {
                 }
 
                 return Promise.all( promises ).then( function( test ) {
-                    resolve();
+                    resolve({
+                        files: self.allFiles,
+                    });
                 } ).catch( function( reason ) {
                     reject(reason)
                 } );
