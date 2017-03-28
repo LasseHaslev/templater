@@ -23,6 +23,8 @@ module.exports = function(data, options) {
                 } ).catch( function( reason ) {
                     reject(reason)
                 } );
+            } ).catch( function(reason) {
+                reject( reason );
             } );
         } );
     };
