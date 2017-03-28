@@ -6,48 +6,56 @@ var extend = require( 'extend' );
 
 module.exports = function( data, options ) {
 
-    return new Promise( function( resolve, reject ) {
-        var allFiles = [];
+    this.allFiles = [];
 
-        var defaults = extend( true, {
-            templateFolder: __dirname + '/../templates',
-            folder: './',
-        }, options );
+    this.data = data || [];
 
-        ncp( defaults.templateFolder, defaults.folder, {
+    this.defaults = extend( true, {
+        templateFolder: __dirname + '/../templates',
+        folder: './',
+    }, options );
+
+    this.start = function( data ) {
+
+        this.data = data || this.data;
+
+        var self = this;
+        ncp( this.defaults.templateFolder, this.defaults.folder, {
             transform: function( read, write ) {
-                allFiles.push( write.path );
+                self.allFiles.push( write.path );
                 read.pipe( write );
             }
         }, function( error ) {
             if (error) {
                 return console.error( error );
             }
-            replaceVariables();
+            self.replaceVariables();
         } );
+    }
 
-        var replaceVariables = function() {
-            for (var i = 0, len = allFiles.length; i < len; i++) {
-                var filePath = allFiles[i];
-                replaceVariable( filePath );
-                resolve();
+
+    this.replaceVariables = function() {
+        for (var i = 0, len = this.allFiles.length; i < len; i++) {
+            var filePath = this.allFiles[i];
+            this.replaceVariable( filePath );
+        }
+    };
+    this.replaceVariable = function( filePath ) {
+
+        var self = this;
+        fileSystem.readFile( filePath, 'utf8', function( error, fileContent ) {
+            if (error) {
+                console.error( error );
             }
-        };
-        var replaceVariable = function( filePath ) {
+            // console.log(self.data);
+            var newContent = hogan.compile( fileContent, { delimiters: '<% %>' } ).render(self.data);
 
-                fileSystem.readFile( filePath, 'utf8', function( error, fileContent ) {
-                    if (error) {
-                        console.error( error );
-                    }
-                var newContent = hogan.compile( fileContent, { delimiters: '<% %>' } ).render(data);
-
-                    fileSystem.writeFile( filePath, newContent, 'utf8', function( error ) {
-                        if (error) {
-                            console.error( error );
-                        }
-                    } );
-                } );
-        };
-    } );
+            fileSystem.writeFile( filePath, newContent, 'utf8', function( error ) {
+                if (error) {
+                    console.error( error );
+                }
+            } );
+        } );
+    };
 
 };
