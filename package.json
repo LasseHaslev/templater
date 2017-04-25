@@ -19,9 +19,6 @@
     "url": "https://github.com/LasseHaslev/templater/issues"
   },
   "homepage": "https://github.com/LasseHaslev/templater#readme",
-  "bin": {
-    "templater": "./bin/app.js"
-  },
   "dependencies": {
     "colors": "^1.1.2",
     "extend": "^3.0.0",
