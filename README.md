@@ -3,7 +3,7 @@
 
 ## Install
 ```bash
-npm install @lassehaslev/templater
+npm install @lassehaslev/templater --save
 ```
 
 ## Usage
@@ -18,7 +18,7 @@ Templater takes 2 parameters
 ```js
 #! /usr/bin/env node
 
-var Templater = require( './Templater' );
+var Templater = require( '@lassehaslev/templater' );
 var templater = new Templater([
     {
         type: 'input',
